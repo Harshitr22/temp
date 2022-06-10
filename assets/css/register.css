@@ -1,0 +1,252 @@
+/*======== Particle Animation from Codepen ==========*/
+
+:root {
+  --bgP: rgba(0, 0, 0, 1);
+  --bgS: rgba(40, 40, 40, 0.5);
+  --bgT: rgba(60, 60, 60, 0.5);
+  --primary: rgba(250, 250, 250, 1);
+  --secondary: rgba(250, 250, 250, 0.6);
+  --tertiary: rgba(250, 250, 250, 0.3);
+}
+
+body {
+  overflow: hidden;
+}
+figure{
+  margin: 0;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bgP);
+  transition: 0.3s ease-in-out;
+}
+
+.pentahedron {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  fill: #3E82F7;
+}
+
+.point {
+  fill: #8491A3;
+}
+
+.rhombus {
+  fill: #2DA94F;
+  stroke: #2DA94F;
+}
+
+.x {
+  fill: #FDBD00;
+}
+
+.circle {
+  fill: #ED412D;
+}
+
+svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transform: translateZ(0px);
+}
+
+/*========= Register Section ========*/
+
+.register, .details {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+}
+
+.register div{
+  width: 700px;
+  height: 500px;
+  padding: 50px 100px;
+  background: var(--bgS);
+  backdrop-filter: blur(4px);
+  border-radius: 50px;
+}
+
+.register .imp , .details. .imp{
+  color: red;
+  opacity: 0.8;
+  font-size: 19px;
+}
+
+.register h1 , .details h1{
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+.register label , .details label{
+  color: var(--secondary);
+  font-weight: 600;
+}
+
+.register input, .details input {
+  width: 100%;
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
+  border: none;
+  border-bottom: 1.5px solid var(--tertiary);
+  margin-bottom: 28px;
+  font-size: 20px;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.register input::placeholder, .details input::placeholder {
+  color: var(--tertiary);
+  font-weight: 300;
+}
+
+.register input:focus, .details input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--primary);
+  /*border-bottom: 2.5px solid rgba(210, 199, 255, 1);*/
+}
+
+.register input:-webkit-autofill,
+.register input:-webkit-autofill:hover, 
+.register input:-webkit-autofill:focus, 
+.register input:-webkit-autofill:active{
+  transition: all 0s 50000s;
+}
+
+.register button, .details button {
+  display: flex;
+  margin: auto;
+  margin-top: 18px;
+  padding: 15px 50px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--bgT);
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+  transition: 0.3s;
+  color: var(--primary);
+}
+
+.register button:hover , .details button:hover{
+  background-color: var(--bgS);
+  padding: 13px 43px;
+}
+
+.register button:focus, .details button:focus {
+  padding: 10px 30px;
+  outline: none;
+  background-color: var(--bgS);
+  
+}
+
+
+/*====================Detalis section===========================*/
+
+#details{
+  display: none;
+}
+
+header{
+  display: flex;
+  gap: 0px 30px ;
+  align-items: center;
+}
+
+.btnContainer{
+  height: 60px;
+}
+
+.deatils input:-webkit-autofill,
+.deatils input:-webkit-autofill:hover, 
+.deatils input:-webkit-autofill:focus, 
+.deatils input:-webkit-autofill:active{
+  transition: all 0s 50000s;
+}
+.skipContainer{
+  height: 40px;
+}
+
+.details .skipBtn{
+  justify-content: flex-end;
+  margin: unset;
+  padding: 5px 15px;
+  font-weight: 400;
+  transition: 0.1s;
+  font-size: 15px;
+  margin-left: auto;
+}
+.skipContainer {
+
+}
+
+
+/*====== Background Switch Button ======*/
+
+.themeBtn {
+  background-color: white;
+  transition: 0.3s ease-in-out;
+  position: fixed;
+  z-index: 4;
+  right: 80px;
+  bottom: 50px;
+} 
+
+
+/*==================================Toast======================================*/
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
